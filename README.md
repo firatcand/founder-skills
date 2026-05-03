@@ -1,4 +1,4 @@
-![Banner]([./assets/banner.png](https://github.com/firatcand/founder-skills/blob/fe2173718aa6ba1ba4723dc703f4649bd38d1231/founder-skills-banner%402x.png))
+founder-skills-banner@2x.png
 # Founder Skills
 
 Claude Code skills for founders building B2B SaaS — covering GTM, product, engineering, design, and content.
