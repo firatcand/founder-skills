@@ -1,4 +1,4 @@
-founder-skills-banner@2x.png
+![banner](founder-skills-banner@2x.png)
 # Founder Skills
 
 Claude Code skills for founders building B2B SaaS — covering GTM, product, engineering, design, and content.
