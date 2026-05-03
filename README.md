@@ -1,7 +1,7 @@
 ![banner](founder-skills-banner@2x.png)
 # Founder Skills
 
-Claude Code skills for founders building B2B SaaS — covering GTM, product, engineering, design, and content.
+Agent skills for founders — covering GTM, product, engineering, design, and content.
 
 Built by a three-time founder who scaled an open-source authorization platform to enterprise customers (Adobe, MasterCard, P&G) and acquisition. These skills encode hard-won playbooks into reusable Claude Code instructions.
 
