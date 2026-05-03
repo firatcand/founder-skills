@@ -3,7 +3,7 @@
 
 Agent skills for founders — covering GTM, product, engineering, design, and content.
 
-Built by a three-time founder who scaled an open-source authorization platform to Fortune 100 companiesand acquisition. These skills encode hard-won playbooks into reusable Claude Code instructions.
+Built by a three-time founder who scaled an open-source authorization platform to Fortune 100 companies and acquisition. These skills encode hard-won playbooks into reusable Agent instructions.
 
 ## Install
 
