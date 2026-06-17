@@ -1,13 +1,10 @@
 ---
 name: prompt-architect
 description: >
-  Expert prompt engineering skill for writing, critiquing, rewriting, comparing, and templating LLM prompts.
-  Use this skill whenever the user wants to: write a new prompt from scratch, improve or fix a weak or vague prompt,
-  critique an existing prompt with scores and diagnosis, compare multiple prompt variants, build a reusable prompt
-  template, or reason about why a prompt fails. Also trigger for requests like "make this prompt better",
-  "why isn't this working", "write a system prompt for X", "A/B compare these two prompts", or any task
-  involving prompt quality, output reliability, or prompt structure — especially for voice AI agents,
-  automation pipelines, and developer tools. This skill encodes the Prompt Architect 3.0 methodology.
+  Use when the user wants to write, critique, rewrite, compare, or templatize a prompt's text — e.g. "make this
+  prompt better", "why isn't this prompt working", "write a system prompt for X", "A/B these two prompts", or
+  building a reusable prompt template. Covers prompt quality, wording precision, and output reliability.
+  Not for production LLM pipeline code (use prompt-engineering-patterns).
 ---
 
 # Prompt Architect
@@ -15,6 +12,15 @@ description: >
 A prompt is a **behavior-specification artifact written in natural language**. Treat every request as both an
 engineering task (inputs, instructions, constraints, outputs) and a language task (intention expressed with
 precision, economy, and zero ambiguity).
+
+## Output discipline
+
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
 
 ---
 
@@ -34,13 +40,9 @@ When mode is ambiguous, state your assumption and proceed.
 
 ---
 
-## Step 2 — Ask Format Before Producing Output
+## Step 2 — Choose Output Format
 
-**Always ask the user their preferred output format before delivering the final prompt, unless they have already specified it in the current request.**
-
-> "Would you prefer the prompt in **Markdown** or **XML**?"
-
-Ask every time. Do not assume the previous answer carries over.
+Default to Markdown. If the user requests another format (XML, JSON, plain text, etc.) — in this request or earlier in the conversation — use that instead. Do not block on a format question; only ask if the request genuinely hinges on it and no reasonable default applies.
 
 ---
 

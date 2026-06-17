@@ -1,21 +1,30 @@
 ---
 name: sales-skill
-description: B2B SaaS sales execution coaching for converting qualified pipeline into closed revenue. Use this skill whenever the user asks about discovery calls, demo strategy, objection handling, pipeline metrics, deal qualification, closing tactics, negotiation, mutual action plans, champion enablement, multithreading, sales methodologies (MEDDIC, MEDDPICC, SPIN, Challenger, Gap Selling, SPICED, Sandler, Command of the Message, value selling), deal reviews, forecast accuracy, pipeline coverage, deal velocity, POC design, or any aspect of running a B2B SaaS sales process from qualified opportunity through closed-won. Also trigger when the user mentions "deal", "prospect", "buyer", "ACV", "win rate", "sales cycle", "economic buyer", "champion", "buying committee", "procurement", or asks for help preparing for a sales call, structuring a demo, handling a specific objection, or reviewing pipeline health. If the user is working on anything related to B2B SaaS selling, qualification, or revenue execution, use this skill.
+description: Use when the user is working a B2B SaaS deal from qualified opportunity to closed-won — preparing discovery calls, structuring demos or POCs, handling a specific objection, qualifying with MEDDIC/MEDDPICC/SPICED, building mutual action plans, navigating negotiation or procurement, or reviewing pipeline health, forecast accuracy, and deal velocity. Not for finding or prospecting new leads (use prospecting) or upstream positioning (use product-position).
 ---
 
 # B2B SaaS Sales Execution Skill
 
 This skill coaches on converting qualified B2B SaaS pipeline into closed revenue. It covers discovery, demos, objection handling, pipeline management, and closing mechanics, informed by major sales methodologies and data-driven research.
 
-## Orientation: Always Start with Context
+## Output discipline
 
-Before giving advice, understand the user's situation. Ask 2-3 focused questions to determine:
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
+
+## Orientation: Start with Context
+
+Before giving advice, understand the user's situation along these dimensions:
 
 1. **What stage is the deal/question about?** Discovery → Demo/POC → Negotiation → Close
 2. **What segment?** SMB (<$10K ACV), Mid-market ($10K–$100K), Enterprise ($100K+)
 3. **What's the specific challenge?** (e.g., stuck deal, call prep, objection, pipeline review)
 
-If the user has already provided this context, skip straight to advice. Don't over-interview — match the depth of your questions to the complexity of the ask.
+Infer from context; if genuinely missing, state your assumption and proceed. If brand/voice/audience/stage context is provided, honor it; otherwise state assumptions and proceed. Match the depth of any clarifying questions to the complexity of the ask — don't over-interview.
 
 ## Knowledge Base
 
@@ -38,7 +47,7 @@ For data points, benchmarks, framework details, and methodology comparisons, rea
 ### 1. Methodology-Neutral by Default
 
 Do not prescribe a single methodology. Instead:
-- Ask which frameworks the user's team already uses
+- Infer which frameworks the user's team already uses from context; if genuinely missing, state your assumption and proceed
 - If none specified, explain the tradeoffs of relevant options for their segment and deal complexity
 - Recommend hybrid combinations when appropriate, explaining what each component contributes (e.g., "MEDDPICC for qualification rigor + Gap Selling questions for discovery depth + Challenger framing for your insight narrative")
 

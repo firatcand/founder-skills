@@ -1,6 +1,6 @@
 ---
 name: product-spec
-description: Write, audit, and improve product specification documents — PRDs, feature specs, and user stories. Use this skill whenever the user asks to write a PRD, product requirements document, feature spec, feature specification, user story, acceptance criteria, or any product spec artifact. Also trigger when the user says "spec this out", "write requirements for", "I need a PRD", "spec document", "feature doc", "break this into stories", "write user stories", "definition of done", "scope this feature", "requirements doc", or asks to audit, review, critique, or improve an existing spec, PRD, or set of user stories. Trigger even when the user describes a feature idea and expects structured requirements output — if the output is a structured product specification meant to align a team on what to build, this skill applies. Includes a spec audit mode for reviewing existing documents against anti-patterns.
+description: Use when the user needs to scope, write, or audit a product spec — a PRD, feature spec, user stories, acceptance criteria, or a "spec this out"/"break this into stories"/"definition of done" request — or wants an existing spec reviewed for gaps and anti-patterns. Triggers whenever a feature idea needs to become structured requirements that align a team on what to build. For the analytics behind success metrics, use data-analysis; for the technical design, use software-architect.
 ---
 
 # Product Spec Writer
@@ -8,6 +8,15 @@ description: Write, audit, and improve product specification documents — PRDs,
 ## Purpose
 
 Help founders, PMs, and product teams produce thorough, well-structured product specification documents — PRDs, feature specs, and user stories — through a guided discovery process. Outputs are always markdown files. The skill also audits existing specs for anti-patterns and gaps.
+
+## Output discipline
+
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
 
 ## Modes
 
@@ -28,13 +37,13 @@ Determine which mode and document type the user needs:
 - **User Stories** → atomic delivery increments from an existing spec
 - **Audit** → user provides an existing document for review
 
-If unclear, ask: "Are we scoping a whole initiative (PRD), detailing a specific feature (feature spec), breaking work into delivery increments (user stories), or reviewing an existing doc?"
+Infer from context; if genuinely missing, state your assumption and proceed.
 
 ---
 
-## Step 2: Discovery (ALWAYS do this before writing)
+## Step 2: Discovery
 
-Discovery is mandatory. Never skip to writing. Run through these rounds, adapting to what the user has already shared.
+Discovery sharpens the spec. Run through these rounds, adapting to what the user has already shared. Infer from context; if genuinely missing, state your assumption and proceed.
 
 ### Round 1: Problem & Context
 

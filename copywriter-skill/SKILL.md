@@ -1,22 +1,26 @@
 ---
 name: copywriter-skill
 description: >
-  Clarity-first copywriting skill for writing, reviewing, and editing commercial copy grounded
-  in principles from Orwell, Zinsser, Hopkins, Schwartz, Ogilvy, Wiebe, Handley, and others.
-  Use this skill whenever the user asks to write, draft, review, edit, critique, improve, or
-  rewrite ANY commercial copy — including landing pages, hero sections, headlines, subheadlines,
-  email subject lines, email body copy (cold outreach, nurture, promo, launch), CTAs, microcopy,
-  product descriptions, feature/benefit messaging, value propositions, ad copy, social media copy,
-  taglines, or above-the-fold messaging. Also trigger when the user asks for copy feedback, a
-  copy audit, a clarity check, a conversion review, or help choosing a copywriting framework
-  (AIDA, PAS, BAB, FAB, 4U's). Trigger even if the user says "write me an email" or "review
-  this landing page" without using the word "copy." If the output is persuasive commercial text
-  meant to drive a reader toward action, this skill applies.
+  Use when the user needs to write, rewrite, review, or critique commercial copy meant to drive
+  a reader toward action — landing pages, hero sections, headlines, email (cold outreach, nurture,
+  promo, launch), CTAs, microcopy, product descriptions, value propositions, ads, or taglines.
+  Also for copy audits, clarity checks, conversion reviews, or choosing a framework (AIDA, PAS,
+  BAB, FAB, 4U's). Applies even when the user just says "write me an email" or "review this page."
+  Not for channel/budget strategy (use channel-expert) or pricing structure (use pricing).
 ---
 
 # Clarity-First Copywriting
 
 This skill enables two modes: **WRITE** (draft new copy) and **REVIEW** (audit and improve existing copy). Both are grounded in the same clarity-first methodology.
+
+## Output discipline
+
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
 
 > **First action on trigger:** Read `references/knowledge-base.md` to load the full methodology before producing any output. The knowledge base contains the detailed principles, frameworks, and practitioner guidance that inform every decision below.
 
@@ -32,15 +36,15 @@ Determine the mode from the user's request:
 | "review," "edit," "improve," "critique," "audit," "rewrite," "fix" | REVIEW |
 | User pastes existing copy + asks for help | REVIEW |
 | User describes a goal/audience + wants output | WRITE |
-| Ambiguous | Ask: "Do you want me to draft new copy or review something you already have?" |
+| Ambiguous | Infer from context (pasted copy → REVIEW; described goal → WRITE); if genuinely unclear, state your assumption and proceed. |
 
 ---
 
 ## WRITE Mode
 
-### Step 1: Gather Context (ask if not provided)
+### Step 1: Gather Context
 
-Before writing a single word, establish:
+If brand/voice/audience/stage context is provided, honor it; otherwise state assumptions and proceed. Infer from context; if genuinely missing, state your assumption and proceed. Before writing a single word, establish:
 
 1. **Format**: What are you writing? (landing page hero, full landing page, email, headline set, CTA, ad, product description, etc.)
 2. **Audience**: Who is the reader? Be specific — role, pain, situation.

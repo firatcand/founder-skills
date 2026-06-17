@@ -199,6 +199,16 @@ def improve_accuracy(prompt, failure_cases):
 
 ## Performance Metrics
 
+> **Illustrative only — not production-quality metrics.** The metric helpers below
+> (and the example script) use simplifications that are fine for demonstrating the
+> shape of an eval loop but should NOT ship as-is:
+> - **Accuracy** here is exact match / bag-of-words overlap. Real accuracy needs a
+>   labeled eval set and a task-appropriate scorer (exact match for closed answers,
+>   F1/semantic similarity for free text, or an LLM-as-judge with a rubric).
+> - **Token counts** must come from the model's own tokenizer (e.g. the provider's
+>   token-counting endpoint/SDK), not `str.split()` — word counts are not tokens.
+> Treat these as scaffolding to replace, not as recommended implementations.
+
 ### Core Metrics
 
 ```python
@@ -369,7 +379,7 @@ class PromptVersionControl:
             'metrics_comparison': {
                 metric: {
                     'v1': v1['metrics'].get(metric),
-                    'v2': v2['metrics'].get(metric'),
+                    'v2': v2['metrics'].get(metric),
                     'change': v2['metrics'].get(metric, 0) - v1['metrics'].get(metric, 0)
                 }
                 for metric in set(v1['metrics'].keys()) | set(v2['metrics'].keys())
