@@ -1,0 +1,9 @@
+# Python build artifacts (the repo sanity test byte-compiles .py files)
+__pycache__/
+*.py[cod]
+
+# OS cruft
+.DS_Store
+
+# Local test venvs
+.venv/
