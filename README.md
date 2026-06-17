@@ -68,8 +68,8 @@ npx openskills install firatcand/founder-skills
 |-------|-------------|
 | **[script-writer-skill](./script-writer-skill)** | Video and podcast scripts — TikTok, Reels, YouTube Shorts/long-form, hooks, retention, CTAs |
 | **[motion-picture](./motion-picture)** | Video production planning — storyboards, shot lists, color scripts, pacing, animation principles |
-| **[prompt-architect](./prompt-architect)** | Write, critique, rewrite, compare, and template LLM prompts. Prompt Architect 3.0 methodology |
-| **[prompt-engineering-patterns](./prompt-engineering-patterns)** | Advanced prompt engineering — chain-of-thought, few-shot, system prompts, optimization techniques |
+| **[prompt-architect](./prompt-architect)** | Write, critique, rewrite, compare, and template prompt *text*. Prompt Architect 3.0 methodology |
+| **[prompt-engineering-patterns](./prompt-engineering-patterns)** | Production LLM application techniques — structured output with schema validation, dynamic few-shot selection, eval loops, failure-mode testing, prompt caching. Framework-agnostic; pairs with prompt-architect |
 
 ## How Skills Work
 
