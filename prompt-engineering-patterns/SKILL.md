@@ -1,11 +1,20 @@
 ---
 name: prompt-engineering-patterns
-description: Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability in production. Use when optimizing prompts, improving LLM outputs, or designing production prompt templates.
+description: Use when building or hardening production LLM application code — structured/JSON output with schema validation, dynamic few-shot example selection, chain-of-thought pipelines, prompt-template systems, eval loops, failure-mode testing, and prompt caching for cost and latency. Not for authoring/critiquing prompt text in chat (use prompt-architect).
 ---
 
 # Prompt Engineering Patterns
 
 Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability.
+
+## Output discipline
+
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
 
 ## When to Use This Skill
 
@@ -69,38 +78,30 @@ Master advanced prompt engineering techniques to maximize LLM performance, relia
 
 ## Quick Start
 
+The durable pattern for reliable production output: define a typed schema, hand it to the model as the
+required response shape, and validate what comes back before using it. The code below shows the technique
+with Pydantic; the same idea applies whether you call the model SDK directly, route through a framework,
+or use a provider's native structured-output mode.
+
+> Use current model IDs — see the claude-api skill; verify library APIs against current docs.
+
 ```python
-from langchain_anthropic import ChatAnthropic
-from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 
-# Define structured output schema
+# 1. Define the response contract as a typed schema
 class SQLQuery(BaseModel):
     query: str = Field(description="The SQL query")
     explanation: str = Field(description="Brief explanation of what the query does")
     tables_used: list[str] = Field(description="List of tables referenced")
 
-# Initialize model with structured output
-llm = ChatAnthropic(model="claude-sonnet-4-5")
-structured_llm = llm.with_structured_output(SQLQuery)
+SYSTEM = """You are an expert SQL developer. Generate efficient, secure SQL queries.
+Always use parameterized queries to prevent SQL injection. Explain your reasoning briefly."""
 
-# Create prompt template
-prompt = ChatPromptTemplate.from_messages([
-    ("system", """You are an expert SQL developer. Generate efficient, secure SQL queries.
-    Always use parameterized queries to prevent SQL injection.
-    Explain your reasoning briefly."""),
-    ("user", "Convert this to SQL: {query}")
-])
-
-# Create chain
-chain = prompt | structured_llm
-
-# Use
-result = await chain.ainvoke({
-    "query": "Find all users who registered in the last 30 days"
-})
-print(result.query)
-print(result.explanation)
+# 2. Request the schema as the required output shape (model="<current-model-id>"),
+#    then parse + validate the response into the schema before trusting it.
+#    Most SDKs and frameworks expose a "structured output" / "tool" mode that
+#    enforces the schema for you; if not, parse the JSON and construct the model
+#    yourself, handling ValidationError as a failure mode (see Pattern 5).
 ```
 
 ## Key Patterns
@@ -124,7 +125,7 @@ async def analyze_sentiment(text: str) -> SentimentAnalysis:
     client = Anthropic()
 
     message = client.messages.create(
-        model="claude-sonnet-4-5",
+        model="<current-model-id>",  # use current model IDs — see the claude-api skill
         max_tokens=500,
         messages=[{
             "role": "user",
@@ -147,10 +148,10 @@ Respond with JSON matching this schema:
 
 ### Pattern 2: Chain-of-Thought with Self-Verification
 
-```python
-from langchain_core.prompts import ChatPromptTemplate
+A plain template string works in any stack — fill `{problem}` and send it as the user turn.
 
-cot_prompt = ChatPromptTemplate.from_template("""
+```python
+COT_PROMPT = """
 Solve this problem step by step.
 
 Problem: {problem}
@@ -170,37 +171,39 @@ Format your response as:
 
 ## Verification
 [Check that your answer is correct]
-""")
+"""
 ```
 
 ### Pattern 3: Few-Shot with Dynamic Example Selection
 
+Instead of hardcoding the same examples into every prompt, retrieve the few that are most relevant to the
+current input. The technique is framework-agnostic: embed your example pool once, embed the incoming query,
+and select the top-k by similarity (or by a diversity/coverage strategy — see `references/few-shot-learning.md`).
+Any embedding model and vector store works; a vector-similarity example-selector from a framework just packages
+these steps for you.
+
+> Use current model IDs — see the claude-api skill; verify library APIs against current docs.
+
 ```python
-from langchain_voyageai import VoyageAIEmbeddings
-from langchain_core.example_selectors import SemanticSimilarityExampleSelector
-from langchain_chroma import Chroma
+EXAMPLES = [
+    {"input": "How do I reset my password?", "output": "Go to Settings > Security > Reset Password"},
+    {"input": "Where can I see my order history?", "output": "Navigate to Account > Orders"},
+    {"input": "How do I contact support?", "output": "Click Help > Contact Us or email support@example.com"},
+]
 
-# Create example selector with semantic similarity
-example_selector = SemanticSimilarityExampleSelector.from_examples(
-    examples=[
-        {"input": "How do I reset my password?", "output": "Go to Settings > Security > Reset Password"},
-        {"input": "Where can I see my order history?", "output": "Navigate to Account > Orders"},
-        {"input": "How do I contact support?", "output": "Click Help > Contact Us or email support@example.com"},
-    ],
-    embeddings=VoyageAIEmbeddings(model="voyage-3-large"),
-    vectorstore_cls=Chroma,
-    k=2  # Select 2 most similar examples
-)
+def select_examples(query: str, k: int = 2) -> list[dict]:
+    """Return the k examples most similar to the query.
 
-async def get_few_shot_prompt(query: str) -> str:
-    """Build prompt with dynamically selected examples."""
-    examples = await example_selector.aselect_examples({"input": query})
+    Implementation is up to you: embed EXAMPLES and `query` with any embedding
+    model, store vectors in any vector store, and rank by cosine similarity.
+    """
+    ...  # embed + nearest-neighbor lookup
 
+def build_few_shot_prompt(query: str) -> str:
+    examples = select_examples(query)
     examples_text = "\n".join(
-        f"User: {ex['input']}\nAssistant: {ex['output']}"
-        for ex in examples
+        f"User: {ex['input']}\nAssistant: {ex['output']}" for ex in examples
     )
-
     return f"""You are a helpful customer support assistant.
 
 Here are some example interactions:
@@ -425,9 +428,10 @@ from anthropic import Anthropic
 
 client = Anthropic()
 
-# Use prompt caching for repeated system prompts
+# Use prompt caching for repeated system prompts.
+# Use current model IDs — see the claude-api skill; verify caching params against current docs.
 response = client.messages.create(
-    model="claude-sonnet-4-5",
+    model="<current-model-id>",
     max_tokens=1000,
     system=[
         {

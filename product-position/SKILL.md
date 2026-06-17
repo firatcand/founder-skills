@@ -1,13 +1,22 @@
 ---
 name: product-position
-description: B2B SaaS product positioning, messaging, and differentiation advisor. Use whenever the user asks about positioning strategy, messaging hierarchy, value propositions, competitive framing, category choice, category design, strategic narratives, differentiation, ICP definition, JTBD for positioning, messaging architecture, homepage messaging strategy, or message-market fit. Trigger on "positioning", "messaging", "value prop", "how do I position", "who is this for", "category", "competitive alternative", "differentiation", "strategic narrative", "messaging matrix", "positioning doc", "audit my positioning", "review my messaging", or any request to define, refine, audit, or build positioning and messaging for a B2B SaaS product. Also trigger when the user is building a homepage, pitch deck, or sales narrative and needs upstream positioning clarity — even if they don't use the word "positioning." If someone says "my messaging isn't working" or "we sound like everyone else," this skill applies.
+description: Use when a B2B SaaS product needs upstream positioning or messaging clarity — defining who it's for, the category, competitive alternatives, differentiation, value props, strategic narrative, or a messaging hierarchy. Triggers include "my messaging isn't working," "we sound like everyone else," repositioning, or auditing an existing positioning doc. Use before homepage, deck, or sales-narrative work. Not for writing the final copy (use copywriter-skill) or running the sales process (use sales-skill).
 ---
 
 # Product Positioning & Messaging for B2B SaaS
 
 ## Purpose
 
-Help founders and operators make sharp positioning decisions, build structured messaging hierarchies, and produce core positioning artifacts — grounded in methodologies from Dunford, Ries & Trout, Raskin, Moesta, Laja, Pierri, Lochhead, and others.
+Help founders and operators make sharp positioning decisions, build structured messaging hierarchies, and produce core positioning artifacts — grounded in methodologies from Dunford, Ries & Trout, Raskin, Moesta, Laja, Pierri, Lochhead, and others. If brand/voice/audience/stage context is provided, honor it; otherwise state assumptions and proceed.
+
+## Output discipline
+
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
 
 ## When to use this skill
 
@@ -34,7 +43,7 @@ Determine which mode the user needs:
 
 ### Step 2: Discovery interview (Build & Audit modes)
 
-Run a structured interview before producing anything. Ask in batches of 2-3 questions max. Cover these areas in order:
+Infer from context; if genuinely missing, state your assumption and proceed. When discovery is warranted, ask in batches of 2-3 questions max, covering these areas in order:
 
 **Round 1 — Context & ICP**
 - What does the product do in one sentence?

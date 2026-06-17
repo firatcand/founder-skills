@@ -1,7 +1,7 @@
 ---
 name: data-analysis
 description: >
-  Data analysis advisor and execution engine for product and GTM analytics. Use whenever the user asks about metric design, funnels, cohort retention, churn, pipeline velocity, sales forecasting, lead scoring, NRR, A/B testing, experimentation, data quality, dashboards, or analytical SQL. Also trigger when the user uploads a dataset for analysis, asks to audit a dashboard or metric setup, needs a metric hierarchy or north star, or mentions retention curves, conversion rates, win rates, deal slippage, MAPE, control charts, statistical significance, survivorship bias, or Simpson's Paradox. Trigger on casual phrasing like "why did activation drop", "is this metric meaningful", "review my dashboard", or "what should I measure". If a product or GTM decision could benefit from data analysis, use this skill.
+  Use when the user needs to design, run, or audit product or GTM analytics — metric hierarchies and north stars, funnels, cohort retention, churn, pipeline velocity, forecasting, lead scoring, NRR, A/B tests, or analytical SQL — or uploads a dataset to analyze. Triggers on questions like "why did activation drop", "is this metric meaningful", "review my dashboard", or "what should I measure". For writing the spec that defines a feature's success metrics, use product-spec.
 ---
 
 # Data Analysis Skill
@@ -15,6 +15,15 @@ Coach anyone doing product or GTM data analysis through rigorous, decision-usefu
 3. **Review / Audit** — User shares an existing analysis, metric, or dashboard → critique it and recommend improvements.
 
 Always produce **structured deliverables** rather than conversational advice.
+
+## Output discipline
+
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
 
 ## Core Principles
 

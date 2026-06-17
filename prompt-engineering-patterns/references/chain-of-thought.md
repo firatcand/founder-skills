@@ -58,8 +58,11 @@ A: Let's think step by step:"""
 
 Generate multiple reasoning paths and take the majority vote:
 
+Use your provider's current SDK and a current model ID — see the `claude-api` skill for current
+Claude model IDs and pricing, and verify any other provider's API against its current docs. The
+`call_model` helper below stands in for whatever client call your stack uses.
+
 ```python
-import openai
 from collections import Counter
 
 def self_consistency_cot(query, n=5, temperature=0.7):
@@ -67,11 +70,8 @@ def self_consistency_cot(query, n=5, temperature=0.7):
 
     responses = []
     for _ in range(n):
-        response = openai.ChatCompletion.create(
-            model="gpt-5",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=temperature
-        )
+        # call_model(prompt, temperature) -> str, using a current model ID
+        response = call_model(prompt, temperature=temperature)
         responses.append(extract_final_answer(response))
 
     # Take majority vote

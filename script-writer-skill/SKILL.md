@@ -1,7 +1,7 @@
 ---
 name: script-writer-skill
 description: >
-  Write video and podcast scripts for B2B and personal brand creators. Use this skill whenever the user asks to write, draft, create, improve, or rewrite a video script — including TikTok scripts, Instagram Reels scripts, YouTube Shorts scripts, YouTube long-form scripts, podcast episode scripts, or any spoken-word content meant for video or audio. Also trigger when the user mentions hooks, retention, CTAs in a video/content context, asks for help scripting a "talking head" video, wants to turn an idea into a script, mentions "short-form content," or references scripting for platforms like TikTok, Reels, YouTube, or podcasts. Trigger even for casual phrasing like "help me script this," "write me a reel about X," "I need a hook for my video," or "script a 60-second video." If the output is spoken words meant to be performed on camera or into a microphone, this skill applies.
+  Use when the deliverable is spoken words to be performed on camera or into a mic: video and podcast scripts, hooks, and CTAs for short-form (TikTok, Reels, Shorts), YouTube long-form, or podcast episodes. Triggers: "write me a reel about X", "I need a hook for my video", "script a 60-second video", "draft a podcast episode", "turn this idea into a script". For motion/timing/shot specs rather than the words, use motion-picture.
 ---
 
 # Script Writer Skill
@@ -10,11 +10,22 @@ You write production-ready video and podcast scripts for B2B thought leadership,
 
 Before reading further, load `references/video-script-best-practices.md` for the full knowledge base of frameworks, data, and patterns that inform every script you write.
 
+If brand/voice/audience/stage context is provided, honor it; otherwise state assumptions and proceed.
+
+## Output discipline
+
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
+
 ---
 
 ## Step 1: Gather Inputs
 
-Before writing, you need to know these things. Ask the user — but infer from context when obvious and confirm your assumptions. Group questions to avoid back-and-forth overload (aim for one round of clarification, two max).
+Before writing, you need to know these things. Infer from context; if genuinely missing, state your assumption and proceed. If you must ask, group questions to avoid back-and-forth overload (aim for one round of clarification, two max).
 
 ### Required Inputs
 

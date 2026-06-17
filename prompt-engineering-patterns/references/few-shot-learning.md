@@ -10,12 +10,15 @@ Few-shot learning enables LLMs to perform tasks by providing a small number of e
 
 Select examples most similar to the input query using embedding-based retrieval.
 
+Any embedding model and vector store works here; pick a current one and verify its API against current
+docs (the `sentence_transformers` import below is just one option). `<embedding-model-id>` is a placeholder.
+
 ```python
 from sentence_transformers import SentenceTransformer
 import numpy as np
 
 class SemanticExampleSelector:
-    def __init__(self, examples, model_name='all-MiniLM-L6-v2'):
+    def __init__(self, examples, model_name='<embedding-model-id>'):
         self.model = SentenceTransformer(model_name)
         self.examples = examples
         self.example_embeddings = self.model.encode([ex['input'] for ex in examples])
@@ -37,7 +40,7 @@ Maximize coverage of different patterns and edge cases.
 from sklearn.cluster import KMeans
 
 class DiversityExampleSelector:
-    def __init__(self, examples, model_name='all-MiniLM-L6-v2'):
+    def __init__(self, examples, model_name='<embedding-model-id>'):
         self.model = SentenceTransformer(model_name)
         self.examples = examples
         self.embeddings = self.model.encode([ex['input'] for ex in examples])

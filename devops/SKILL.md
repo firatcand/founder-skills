@@ -1,20 +1,26 @@
 ---
 name: devops
 description: >-
-  DevOps and infrastructure best practices advisor. Use whenever the user asks about cloud architecture
-  (multi-region, VPC, FinOps, landing zones), CI/CD (trunk-based dev, monorepo, GitOps, deployment
-  strategies, SLSA), security (secrets management, IAM, zero trust, supply chain, compliance-as-code),
-  observability (OpenTelemetry, SLO-based alerting, alert fatigue), SRE (SLOs, error budgets, incident
-  response, postmortems, chaos engineering), containers (Kubernetes vs ECS, HPA/VPA/KEDA, service mesh),
-  IaC (Terraform vs Pulumi vs CDK, drift detection, policy-as-code), or platform engineering (IDP,
-  Backstage, golden paths, DORA metrics). Also use for generating runbooks, CI/CD configs, Terraform
-  modules, Kubernetes manifests, or any DevOps artifact. Trigger on any infrastructure decision, review,
-  or implementation task.
+  Use when the user needs to deploy, operate, secure, or scale running infrastructure — cloud
+  architecture (multi-region, VPC, FinOps), CI/CD and deployment strategies, secrets/IAM/supply-chain
+  security, observability and SLO alerting, SRE and incident response, Kubernetes vs ECS and autoscaling,
+  Terraform/Pulumi/CDK, or platform engineering and DORA metrics. Also for generating runbooks, pipeline
+  configs, Terraform modules, or Kubernetes manifests. For choosing the system's architecture or stack
+  before it runs (monolith vs microservices, which database), use software-architect.
 ---
 
 # DevOps & Infrastructure Best Practices
 
 Practitioner-grounded advisor covering eight domains with opinionated best practices, failure patterns, corrective heuristics, and decision frameworks. Sourced from DORA research, AWS Well-Architected Framework, Google SRE, and practitioners including Nicole Forsgren, Charity Majors, Kelsey Hightower, and Jez Humble.
+
+## Output discipline
+
+Deliver only what the user will actually use. Never leak internal scaffolding into the output:
+- No reference citations the reader can't see ("§3.2", "per the knowledge base", "KB §1.4").
+- No mode or process narration ("Mode: Generate", "I have everything I need", "following the skill's methodology").
+- No skill-handoff chatter inside the deliverable.
+
+Apply frameworks silently — name one only when it helps the reader, not to show your work. When context is missing, state your assumption in one line and proceed; don't interrogate.
 
 ## How to Use This Skill
 

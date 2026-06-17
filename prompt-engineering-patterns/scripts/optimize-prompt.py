@@ -3,6 +3,15 @@
 Prompt Optimization Script
 
 Automatically test and optimize prompts using A/B testing and metrics tracking.
+
+NOTE: The metrics in this script are ILLUSTRATIVE ONLY — they demonstrate the
+shape of an eval/optimization loop, not production-quality measurement.
+  - `token_count` uses str.split() (word count), which is NOT a real token count.
+    Use the model's own tokenizer / token-counting endpoint instead.
+  - `calculate_accuracy` uses exact match + bag-of-words overlap, which is a weak
+    proxy. Real accuracy needs a labeled eval set and a task-appropriate scorer
+    (exact match, F1/semantic similarity, or an LLM-as-judge with a rubric).
+Replace both before relying on the results.
 """
 
 import json
@@ -56,6 +65,8 @@ class PromptOptimizer:
             latency = time.time() - start_time
 
             # Calculate individual metrics
+            # ILLUSTRATIVE ONLY: word count, not a real token count. Use the
+            # model's tokenizer / token-counting endpoint in production.
             token_count = len(prompt.split()) + len(response.split())
             success = 1 if response else 0
             accuracy = self.calculate_accuracy(response, test_case.expected_output)
@@ -86,7 +97,12 @@ class PromptOptimizer:
         }
 
     def calculate_accuracy(self, response: str, expected: str) -> float:
-        """Calculate accuracy score between response and expected output."""
+        """Calculate accuracy score between response and expected output.
+
+        ILLUSTRATIVE ONLY: exact match + bag-of-words overlap. This is a weak
+        proxy — real accuracy needs a labeled eval set and a task-appropriate
+        scorer (exact match, F1/semantic similarity, or LLM-as-judge).
+        """
         # Simple exact match
         if response.strip().lower() == expected.strip().lower():
             return 1.0
