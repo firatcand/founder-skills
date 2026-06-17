@@ -58,18 +58,14 @@ npx openskills install firatcand/founder-skills
 
 | Skill | What it does |
 |-------|-------------|
-| **[ui-design](./ui-design)** | UI design principles — spacing, visual hierarchy, typography, color systems, accessibility |
-| **[ux-design](./ux-design)** | UX audit and design specs — Gestalt principles, progressive disclosure, affordance, feedback |
-| **[graphic-design](./graphic-design)** | Color, typography, layout, branding, WCAG accessibility, design systems for non-designers |
+| **[design](./design)** | UI/UX audits, design specs (spacing, type scale, color tokens, grids), and brand foundations (logo systems, palette/type pairing, guidelines) — for non-designers. Hands off to frontend-design for code |
 
-### Content & Prompting
+### Content
 
 | Skill | What it does |
 |-------|-------------|
 | **[script-writer-skill](./script-writer-skill)** | Video and podcast scripts — TikTok, Reels, YouTube Shorts/long-form, hooks, retention, CTAs |
 | **[motion-picture](./motion-picture)** | Video production planning — storyboards, shot lists, color scripts, pacing, animation principles |
-| **[prompt-architect](./prompt-architect)** | Write, critique, rewrite, compare, and template prompt *text*. Prompt Architect 3.0 methodology |
-| **[prompt-engineering-patterns](./prompt-engineering-patterns)** | Production LLM application techniques — structured output with schema validation, dynamic few-shot selection, eval loops, failure-mode testing, prompt caching. Framework-agnostic; pairs with prompt-architect |
 
 ## How Skills Work
 
